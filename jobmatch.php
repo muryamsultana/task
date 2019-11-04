@@ -4,7 +4,7 @@ Job Match function
 taking company and job value from db
 */
 
-$expertise = array("bike","driver's license");
+
 $jobs = array("Company A"=>"requires an apartment or house, and property insurance.",
 			  "Compnay B"=>"requires 5 door car or 4 door car, and a driver's license and car insurance.",
 			  "Company C"=>"requires a social security number and a work permit. ",
@@ -28,9 +28,12 @@ $arr1 = array_filter(
 		$count = 0;
 		$arr1 = array();
 		foreach($expertise as $experti){
-        if(strpos($value,$experti) !== false){
-			$count++;
+			if(strpos($value,$experti) !== false){
+				$count++;
+			}
 		}
+		if(strpos($value,"doesn't require anything") !== false){
+			$arr1[$key] = $value;
 		}
 		if($count == count($expertise))
 			$arr1[$key] = $value;
